@@ -1,6 +1,6 @@
 function getHistory(SheetName){
     if(SheetName){
-        url = 'https://script.google.com/macros/s/AKfycbzq3pkHUo1fBCxbJqrmcsUfcxjMAR4_KBd3xim6t8y7rfkGoIecavD-auJI4pRzBsSjSQ/exec?action=GetRecord' + SheetName;
+        url = 'https://script.google.com/macros/s/AKfycbzq3pkHUo1fBCxbJqrmcsUfcxjMAR4_KBd3xim6t8y7rfkGoIecavD-auJI4pRzBsSjSQ/exec?action=GetRecord&name=' + SheetName;
     }else{
         url = 'https://script.google.com/macros/s/AKfycbzq3pkHUo1fBCxbJqrmcsUfcxjMAR4_KBd3xim6t8y7rfkGoIecavD-auJI4pRzBsSjSQ/exec?action=GetRecord';
     }
@@ -31,9 +31,9 @@ function getHistoryNums(){
     })
 }
 
-async function fillHistory(){
+async function fillHistory(SheetName){
     try{
-        const data = await getHistory();
+        const data = await getHistory(SheetName);
         console.log(data);
     } catch(error){
         // let msg = document.createElement('a');
@@ -51,8 +51,8 @@ async function fillStackList(){
             let newElement = document.createElement('a');
             newElement.classList.add('dropdown-item');
             newElement.textContent = HistoryNum[i];
+            newElement.href = 'history.html?sheetname=' + HistoryNum[i];
             renderArea.appendChild(newElement);
-            console.log(HistoryNum[i])
         }
         
     }

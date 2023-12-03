@@ -18,6 +18,13 @@
         $(document).ready(function(){
             // fillHistory();
             fillStackList();
+            const urlparam = new URLSearchParams(window.location.search);
+            const sheetname  = urlparam.get('sheetname');
+            if(sheetname){
+                fillHistory(sheetname);
+            }else{
+                window.location.replace('index.html');
+            }
         })
     </script>
 </head>
