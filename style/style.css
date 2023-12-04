@@ -1,0 +1,14 @@
+main table{
+    font-size: 20px;
+}
+#historyTable{
+    width: 600px;
+    text-align: center;
+    margin: 0 auto;
+    /* border: solid 1px black; */
+}
+#historyTable td{
+    width: 300px;
+    height: 60px;
+    border-top: 1px solid rgba(128, 128, 128, 0.193);
+}

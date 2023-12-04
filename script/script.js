@@ -1,4 +1,17 @@
+// let loginForm = document.getElementById('LoginForm');
+document.addEventListener('DOMContentLoaded', function(){
+    document.getElementById('LoginForm').addEventListener('submit', function(event){
+        event.preventDefault(); //阻止表單默認提交行為
+    
+        let FormData = new FormData(event.target);
+        console.log(FormData);
+        // let url = 'https://script.google.com/macros/s/AKfycby6CE4Bi2Q0SkzxfmhDfcq1dvzN_5ybeBli-dPYrApnoHbbkIhMwA4sswfF-fK7HkXgJQ/exec?action=Login&username=';
+        // fetch(url + )
+    })
+})
+
 function getHistory(SheetName){
+    let url;
     if(SheetName){
         url = 'https://script.google.com/macros/s/AKfycbzq3pkHUo1fBCxbJqrmcsUfcxjMAR4_KBd3xim6t8y7rfkGoIecavD-auJI4pRzBsSjSQ/exec?action=GetRecord&name=' + SheetName;
     }else{
@@ -8,10 +21,10 @@ function getHistory(SheetName){
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 res(data);
             })
             .catch(error => {
+                console.log(error);
                 rej(error);
             });
     })
@@ -32,12 +45,45 @@ function getHistoryNums(){
 }
 
 async function fillHistory(SheetName){
+    // let table = document.createElement('table');
+    // table.classList.add('table');
+    let tableArea = document.getElementById('historyTable');
+    
+
+    // let headerRow = document.createElement('tr');
+
+    // let th0 = document.createElement('th');
+    // th0.textContent = '職位';
+
+    // let th1 = document.createElement('th');
+    // th1.textContent = '人員';
+
+    // th0.setAttribute('scope', 'col');
+    // th1.setAttribute('scope', 'col');
+    
+    // headerRow.appendChild(th0);
+    // headerRow.appendChild(th1);
+    // table.appendChild(headerRow);
+
+    let mainArea = document.getElementById('main')
+
     try{
         const data = await getHistory(SheetName);
         console.log(data);
+        for(let i = 0; i < data.length; i++){
+            let tr = document.createElement('tr');
+            let td0 = document.createElement('td');
+            td0.textContent = Object.keys(data[i])
+            let td1 = document.createElement('td');
+            td1.textContent = Object.values(data[i]);
+            tr.appendChild(td0);
+            tr.appendChild(td1);
+            tableArea.appendChild(tr);
+            // document.body.offsetHeight;
+            // tableArea.classList.add('table');
+        }
     } catch(error){
-        // let msg = document.createElement('a');
-        // msg.textContent = '獲取資訊時出現錯誤';
+        console.log(error);
         makeTextModal('錯誤', '獲取歷史紀錄時出現錯誤');
     }
 }

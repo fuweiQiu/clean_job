@@ -13,7 +13,7 @@
         integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script/script.js"></script>
-    <link rel="stylesheet" href="./style/styke.css">
+    <link rel="stylesheet" href="./style/style.css">
     <script>
         $(document).ready(function(){
             // fillHistory();
@@ -35,7 +35,7 @@
                 <div class="collapse navbar-collapse" id="collapsibleNavId">
                     <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" aria-current="page">首頁 <span
+                            <a class="nav-link active" href="./index.html" aria-current="page">首頁 <span
                                     class="visually-hidden">(current)</span></a>
                         </li>
                         <li class="nav-item">
@@ -50,16 +50,17 @@
                             </div>
                         </li>
                     </ul>
-                    <form class="d-flex my-2 my-lg-0">
-                        <input class="form-control me-sm-2" type="text" placeholder="帳號">
-                        <input type="text" class="form-control me-sm-2" placeholder="密碼">
+                    <form class="d-flex my-2 my-lg-0" id="LoginForm">
+                        <input class="form-control me-sm-2" type="text" placeholder="帳號" id="username">
+                        <input type="text" class="form-control me-sm-2" placeholder="密碼" id="password">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
                     </form>
                 </div>
             </div>
         </nav>
-
     </header>
+    <main>
+    </main>
 </body>
 
 </html>
